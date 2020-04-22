@@ -31,6 +31,7 @@ format_diff(){
 cd "$GITHUB_WORKSPACE" || exit 1
 
 # All files improperly formatted will be printed to the output.
-find . -name "*.[hc]" | while read -r src_file; do format_diff "${src_file}"; done || exit 1
+find ./include ./src ./test -regex '.*.h' | while read -r src_file; do format_diff "${src_file}"; done || exit 1
+find ./include ./src ./test -regex '.*.cpp' | while read -r src_file; do format_diff "${src_file}"; done || exit 1
 
 exit 0
