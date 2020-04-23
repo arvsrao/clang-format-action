@@ -22,10 +22,10 @@ format_diff(){
     diff -q <(cat "${filepath}") <(echo "${local_format}") > /dev/null
     diff_result="$?"
     if [[ "${diff_result}" -ne 0 ]]; then
-	echo "${filepath} is not formatted correctly." >&2
-	return "${diff_result}"
+    	echo "${filepath} is not formatted correctly." >&2
+		return "${diff_result}"
     fi
-    return 0
+    return 0;
 }
 
 cd "$GITHUB_WORKSPACE" || exit 1
@@ -34,4 +34,4 @@ cd "$GITHUB_WORKSPACE" || exit 1
 find ./include ./src ./test -regex '.*.h' | while read -r src_file; do format_diff "${src_file}"; done || exit 1
 find ./include ./src ./test -regex '.*.cpp' | while read -r src_file; do format_diff "${src_file}"; done || exit 1
 
-exit 0
+exit 0;
