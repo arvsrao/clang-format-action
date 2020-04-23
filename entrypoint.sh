@@ -18,7 +18,7 @@
 # compared to the original file.
 format_diff(){
     local filepath="$1"
-    local_format="$(clang-format-10 --style=file --fallback-style=LLVM "${filepath}")"
+    local_format="$(clang-format-9 --style=file --fallback-style=LLVM "${filepath}")"
     diff -q <(cat "${filepath}") <(echo "${local_format}") > /dev/null
     diff_result="$?"
     if [[ "${diff_result}" -ne 0 ]]; then
