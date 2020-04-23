@@ -12,7 +12,7 @@ LABEL "homepage"="https://github.com/arvsrao/clang-format-action"
 LABEL "maintainer"="arvsrao <arvsrao@gmail.com>"
 
 RUN apt-get -y update
-RUN apt-get -y install cmake clang-format-9 qtbase5-dev
+RUN apt-get -y install cmake clang-format-10 qtbase5-dev
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
