@@ -23,7 +23,7 @@ format_diff(){
     diff_result="$?"
     if [[ "${diff_result}" -ne 0 ]]; then
     	echo "${filepath} is not formatted correctly." >&2
-		return "${diff_result}"
+		return 1;
     fi
     return 0;
 }
@@ -31,7 +31,17 @@ format_diff(){
 cd "$GITHUB_WORKSPACE" || exit 1
 
 # All files improperly formatted will be printed to the output.
-find ./include ./src ./test -regex '.*.h' | while read -r src_file; do format_diff "${src_file}"; done || exit 1
-find ./include ./src ./test -regex '.*.cpp' | while read -r src_file; do format_diff "${src_file}"; done || exit 1
+acc=0;
 
+files=$(find ./src ./include ./test -regex '.*.(h|cpp)')
+for f in $files; do 
+    format_diff $f
+    acc=$((acc + $?))
+done
+
+#for i in {1..5}; do ((acc++)); done
+if [[ $acc -ne 0 ]]; then
+    echo $acc "file(s) not properly formatted."
+    exit 1;
+fi
 exit 0;
