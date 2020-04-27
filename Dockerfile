@@ -13,7 +13,6 @@ LABEL "maintainer"="arvsrao <arvsrao@gmail.com>"
 
 RUN apt-get -y update
 RUN apt-get -y install clang-format-9 
-#RUN apt-get -y install cmake qtbase5-dev
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
