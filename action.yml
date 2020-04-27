@@ -1,9 +1,9 @@
-name: "clang-format Check"
-description: "Use clang-format to see if your C code is formatted according to project guidelines."
+name: "clang-format checker"
+description: "use clang-format version 9 to determine if C++ code is properly formatted."
 
 branding:
-  icon: "check-circle"
-  color: "blue"
+  icon: "thumbs-up"
+  color: "green"
 
 runs:
   using: "docker"
