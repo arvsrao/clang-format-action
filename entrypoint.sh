@@ -9,9 +9,10 @@ format_diff(){
     diff -q <(cat "${filepath}") <(echo "${local_format}") > /dev/null
     diff_result="$?"
     if [[ "${diff_result}" -ne 0 ]]; then
-    	echo "${filepath} is not formatted correctly." >&2
-		return 1;
+    	echo "${filepath} is NOT formatted correctly." >&2
+    	return 1;
     fi
+    echo "${filepath} is correctly formatted."
     return 0;
 }
 
@@ -28,7 +29,7 @@ done
 
 #for i in {1..5}; do ((acc++)); done
 if [[ $acc -ne 0 ]]; then
-    echo $acc "file(s) not properly formatted."
+    echo $acc "file(s) NOT properly formatted."
     exit 1;
 fi
 exit 0;
