@@ -21,7 +21,7 @@ cd "$GITHUB_WORKSPACE" || exit 1
 # All files improperly formatted will be printed to the output.
 acc=0;
 
-files=$(find . -regextype posix-extended  -regex '.*.(h|cpp)')
+files=$(find . -regextype posix-extended  -regex '.*\.(h|cpp)')
 for f in $files; do
     format_diff $f
     acc=$((acc + $?))
